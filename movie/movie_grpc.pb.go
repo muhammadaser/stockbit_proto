@@ -31,7 +31,7 @@ func NewRouteMovieClient(cc grpc.ClientConnInterface) RouteMovieClient {
 
 func (c *routeMovieClient) GetMovies(ctx context.Context, in *MovieParams, opts ...grpc.CallOption) (*MoviesRes, error) {
 	out := new(MoviesRes)
-	err := c.cc.Invoke(ctx, "/stockbit_proto.RouteMovie/GetMovies", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/movie.RouteMovie/GetMovies", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -40,7 +40,7 @@ func (c *routeMovieClient) GetMovies(ctx context.Context, in *MovieParams, opts 
 
 func (c *routeMovieClient) GetMovie(ctx context.Context, in *SingleMovieParams, opts ...grpc.CallOption) (*Movie, error) {
 	out := new(Movie)
-	err := c.cc.Invoke(ctx, "/stockbit_proto.RouteMovie/GetMovie", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/movie.RouteMovie/GetMovie", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -89,7 +89,7 @@ func _RouteMovie_GetMovies_Handler(srv interface{}, ctx context.Context, dec fun
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/stockbit_proto.RouteMovie/GetMovies",
+		FullMethod: "/movie.RouteMovie/GetMovies",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(RouteMovieServer).GetMovies(ctx, req.(*MovieParams))
@@ -107,7 +107,7 @@ func _RouteMovie_GetMovie_Handler(srv interface{}, ctx context.Context, dec func
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/stockbit_proto.RouteMovie/GetMovie",
+		FullMethod: "/movie.RouteMovie/GetMovie",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(RouteMovieServer).GetMovie(ctx, req.(*SingleMovieParams))
@@ -116,7 +116,7 @@ func _RouteMovie_GetMovie_Handler(srv interface{}, ctx context.Context, dec func
 }
 
 var _RouteMovie_serviceDesc = grpc.ServiceDesc{
-	ServiceName: "stockbit_proto.RouteMovie",
+	ServiceName: "movie.RouteMovie",
 	HandlerType: (*RouteMovieServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
@@ -129,5 +129,5 @@ var _RouteMovie_serviceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "movie.proto",
+	Metadata: "movie/movie.proto",
 }

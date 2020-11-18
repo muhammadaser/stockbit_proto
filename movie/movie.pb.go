@@ -4,7 +4,7 @@
 // 	protoc        v3.11.4
 // source: movie.proto
 
-package stockbit_proto
+package movie
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
